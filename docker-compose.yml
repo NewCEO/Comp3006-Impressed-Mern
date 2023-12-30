@@ -1,0 +1,25 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: dockerfile
+    ports:
+      - "3002:3000"
+    networks:
+      - mern-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: dockerfile
+    ports:
+      - "3003:3001"
+    networks:
+      - mern-network
+    depends_on:
+      - client
+
+networks:
+  mern-network:
+    driver: bridge
