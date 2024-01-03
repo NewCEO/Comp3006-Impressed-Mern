@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node ./build/index.js",
+        "start": "node ./build/index.ts",
         "dev": "nodemon --exec ts-node ./src/index.ts",
         "build": "tsc -p .",
         "test": "jest --transformIgnorePatterns \"node_modules/(?!(@babel|jest))/\""

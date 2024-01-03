@@ -16,21 +16,25 @@ export const Product = (props: Props) => {
   const [updatedStock, setUpdatedStock] = useState(stockQuantity);
 
 
-useEffect(() => {
-  const handleInventoryUpdated = (updatedProducts) => {
-    const updatedProduct = updatedProducts.find((product) => product._id === _id);
-    if (updatedProduct) {
-      setUpdatedStock(updatedProduct.stockQuantity);
-    }
-    alert(`Received inventoryUpdated event for ${productName}. Stock left: ${updatedProduct.stockQuantity}`);
-  };
-
-  socket.on("inventoryUpdated", handleInventoryUpdated);
-
-  return () => {
-    socket.off("inventoryUpdated", handleInventoryUpdated);
-  };
-}, []);
+  useEffect(() => {
+    const handleInventoryUpdated = (updatedProducts) => {
+      const updatedProduct = updatedProducts.find((product) => product._id === _id);
+      if (updatedProduct) {
+        setUpdatedStock(updatedProduct.stockQuantity);
+        alert(`Received inventoryUpdated event for ${productName}. Stock left: ${updatedProduct.stockQuantity}`);
+      } else {
+        // Handle the case where updatedProduct is undefined
+        console.error(`Product with ID ${_id} not found in updatedProducts`);
+      }
+    };
+  
+    socket.on("inventoryUpdated", handleInventoryUpdated);
+  
+    return () => {
+      socket.off("inventoryUpdated", handleInventoryUpdated);
+    };
+  }, []); 
+  
 
 
 

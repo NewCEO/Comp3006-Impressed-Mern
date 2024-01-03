@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import http from "http";
-import { Server } from "socket.io";
+// import { Server } from "socket.io";
 import { userRouter } from "./routes/user";
 import { productRouter } from "./routes/product";
 import { initializeSocket } from './routes/socket'; 

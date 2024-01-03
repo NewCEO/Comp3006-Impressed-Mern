@@ -5,7 +5,7 @@ let ioSocket: Socket;
 export const initializeSocket = (httpServer: any) => {
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:3002",
+      origin: "http://localhost:3000",
       methods: ["GET", "POST"],
     },
     transports: ["websocket", "polling"]

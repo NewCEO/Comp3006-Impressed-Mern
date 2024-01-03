@@ -39,10 +39,10 @@ describe('CheckoutPage', () => {
 
     mockGetTotalCartAmount.mockReturnValue(100);
     
-    // Mock the useNavigate hook to return mockNavigate
+
     jest.spyOn(require('react-router-dom'), 'useNavigate').mockReturnValue(mockNavigate);
 
-    // Fire the checkout event
+    
     fireEvent.click(screen.getByText('Checkout'));
 
     expect(mockCheckout).toHaveBeenCalledWith(expect.any(String));

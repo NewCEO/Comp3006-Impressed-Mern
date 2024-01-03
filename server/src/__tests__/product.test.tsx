@@ -30,11 +30,11 @@ app.use(express.json());
 app.use('/', router); 
 app.use('/product', checkout);
 
-app.post('/register', registerHandler);
-app.post('/login', loginHandler);
+// app.post('/register', registerHandler);
+// app.post('/login', loginHandler);
 
-app.get('/available-money/:userID', availableMoneyHandler);
-app.get('/purchased-items/:customerID', verifyToken, purchasedItemsHandler);
+// app.get('/available-money/:userID', availableMoneyHandler);
+app.get('/purchased-items/:customerID',purchasedItemsHandler);
 
 jest.mock('../models/product'); 
 jest.mock('../models/user')
